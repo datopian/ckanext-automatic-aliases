@@ -10,10 +10,12 @@ def get_resource_name(resource_name):
 
 def create_alias(resource_id, context):
     resource_info = get_action('resource_show')(None, { 'id': resource_id })
+    print(resource_info, flush=True)
     get_action('datastore_create')(context, { 'resource_id': resource_id, 'aliases': get_resource_name(resource_info['name']), 'force': True})
 
 @chained_action
 def datastore_create(original_action, context, data_dict):
+    print("CREATING DATASTORE OBJECT", flush=True)
     result = original_action(context, data_dict)                                                        
     if "aliases" not in data_dict:
         enqueue_job(create_alias, [result['resource_id'], { 'user': context['user'], 'auth_user_obj': context['auth_user_obj']}])
