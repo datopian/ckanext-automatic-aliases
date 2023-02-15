@@ -1,0 +1,14 @@
+# automatic_aliases-js:
+#   filter: rjsmin
+#   output: ckanext-automatic_aliases/%(version)s-automatic_aliases.js
+#   contents:
+#     - js/automatic_aliases.js
+#   extra:
+#     preload:
+#       - base/main
+
+# automatic_aliases-css:
+#   filter: cssrewrite
+#   output: ckanext-automatic_aliases/%(version)s-automatic_aliases.css
+#   contents:
+#     - css/automatic_aliases.css
