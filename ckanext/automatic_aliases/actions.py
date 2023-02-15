@@ -10,7 +10,6 @@ def get_resource_name(resource_name):
 
 def create_alias(resource_id, context):
     resource_info = get_action('resource_show')(None, { 'id': resource_id })
-    print("CREATED THE ALIAS", flush=True)
     get_action('datastore_create')(context, { 'resource_id': resource_id, 'aliases': get_resource_name(resource_info['name']), 'force': True})
 
 @chained_action
