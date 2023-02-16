@@ -1,8 +1,10 @@
 import requests
-import ckan.plugins.toolkit as toolkit
+import logging
 import ckan.logic.action as actions
 from ckan.plugins.toolkit import chained_action, get_action, enqueue_job
 from ckan.common import config
+
+log = logging.getLogger(__name__)
 
 def add_permissions(table_name):
     url = config.get("ckanext.data_api.hasura_url") + "/v1/metadata"
@@ -57,8 +59,8 @@ def create_alias(resource_id, context):
 def datastore_create(original_action, context, data_dict):
     result = original_action(context, data_dict)                                                        
     if "aliases" not in data_dict:
-        print("CREATING ALIAS", flush=True)
+        log.info("CREATING ALIAS")
         enqueue_job(create_alias, [result['resource_id'], { 'user': context['user'], 'auth_user_obj': context['auth_user_obj']}])
     else:
-        print("NOT CREATING ALIAS", flush=True)
+        log.info("NOT CREATING ALIAS")
     return result
