@@ -1,0 +1,14 @@
+# data_api-js:
+#   filter: rjsmin
+#   output: ckanext-data_api/%(version)s-data_api.js
+#   contents:
+#     - js/data_api.js
+#   extra:
+#     preload:
+#       - base/main
+
+# data_api-css:
+#   filter: cssrewrite
+#   output: ckanext-data_api/%(version)s-data_api.css
+#   contents:
+#     - css/data_api.css

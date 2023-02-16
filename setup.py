@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='''ckanext-automatic-aliases''',
+    name='''ckanext-data-api''',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -23,7 +23,7 @@ setup(
     long_description_content_type="text/markdown",
 
     # The project's main homepage.
-    url='https://github.com/datopian/ckanext-automatic-aliases',
+    url='https://github.com/datopian/ckanext-data-api',
 
     # Author details
     author='''Luccas Mateus''',
@@ -84,7 +84,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        automatic_aliases=ckanext.automatic_aliases.plugin:AutomaticAliasesPlugin
+        data_api=ckanext.data_api.plugin:AutomaticAliasesPlugin
 
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan

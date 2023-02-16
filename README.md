@@ -1,6 +1,6 @@
-[![Tests](https://github.com/datopian/ckanext-automatic-aliases/workflows/Tests/badge.svg?branch=main)](https://github.com/datopian/ckanext-automatic-aliases/actions)
+[![Tests](https://github.com/datopian/ckanext-data-api/workflows/Tests/badge.svg?branch=main)](https://github.com/datopian/ckanext-data-api/actions)
 
-# ckanext-automatic-aliases
+# ckanext-data-api
 
 **TODO:** Put a description of your extension here:  What does it do? What features does it have? Consider including some screenshots or embedding a video!
 
@@ -35,7 +35,7 @@ Suggested values:
    For example installing any non-Python dependencies or adding any required
    config settings.
 
-To install ckanext-automatic-aliases:
+To install ckanext-data-api:
 
 1. Activate your CKAN virtual environment, for example:
 
@@ -43,12 +43,12 @@ To install ckanext-automatic-aliases:
 
 2. Clone the source and install it on the virtualenv
 
-    git clone https://github.com/datopian/ckanext-automatic-aliases.git
-    cd ckanext-automatic-aliases
+    git clone https://github.com/datopian/ckanext-data-api.git
+    cd ckanext-data-api
     pip install -e .
 	pip install -r requirements.txt
 
-3. Add `automatic-aliases` to the `ckan.plugins` setting in your CKAN
+3. Add `data-api` to the `ckan.plugins` setting in your CKAN
    config file (by default the config file is located at
    `/etc/ckan/default/ckan.ini`).
 
@@ -65,16 +65,16 @@ None at present
 
 	# The minimum number of hours to wait before re-checking a resource
 	# (optional, default: 24).
-	ckanext.automatic_aliases.some_setting = some_default_value
+	ckanext.data_api.some_setting = some_default_value
 
 
 ## Developer installation
 
-To install ckanext-automatic-aliases for development, activate your CKAN virtualenv and
+To install ckanext-data-api for development, activate your CKAN virtualenv and
 do:
 
-    git clone https://github.com/datopian/ckanext-automatic-aliases.git
-    cd ckanext-automatic-aliases
+    git clone https://github.com/datopian/ckanext-data-api.git
+    cd ckanext-data-api
     python setup.py develop
     pip install -r dev-requirements.txt
 
@@ -86,9 +86,9 @@ To run the tests, do:
     pytest --ckan-ini=test.ini
 
 
-## Releasing a new version of ckanext-automatic-aliases
+## Releasing a new version of ckanext-data-api
 
-If ckanext-automatic-aliases should be available on PyPI you can follow these steps to publish a new version:
+If ckanext-data-api should be available on PyPI you can follow these steps to publish a new version:
 
 1. Update the version number in the `setup.py` file. See [PEP 440](http://legacy.python.org/dev/peps/pep-0440/#public-version-identifiers) for how to choose version numbers.
 
