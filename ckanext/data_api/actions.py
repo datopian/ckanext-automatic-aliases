@@ -57,5 +57,8 @@ def create_alias(resource_id, context):
 def datastore_create(original_action, context, data_dict):
     result = original_action(context, data_dict)                                                        
     if "aliases" not in data_dict:
+        print("CREATING ALIAS", flush=True)
         enqueue_job(create_alias, [result['resource_id'], { 'user': context['user'], 'auth_user_obj': context['auth_user_obj']}])
+    else:
+        print("NOT CREATING ALIAS", flush=True)
     return result
