@@ -50,7 +50,8 @@ def get_resource_name(resource_name):
     return resource_name.lower()
 
 def create_alias(resource_id, context):
-    resource_info = get_action('resource_show')(None, { 'id': resource_id })
+    context['creating_alias'] = True
+    resource_info = get_action('resource_show')(context, { 'id': resource_id })
     get_action('datastore_create')(context, { 'resource_id': resource_id, 'aliases': get_resource_name(resource_info['name']), 'force': True})
     track_view(get_resource_name(resource_info['name']))
     add_permissions(get_resource_name(resource_info['name']))
