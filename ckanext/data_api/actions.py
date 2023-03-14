@@ -3,6 +3,7 @@ import logging
 import ckan.logic.action as actions
 from ckan.plugins.toolkit import chained_action, get_action, enqueue_job
 from ckan.common import config
+from pprint import pformat
 
 log = logging.getLogger(__name__)
 
@@ -22,7 +23,7 @@ def add_permissions(table_name):
         "X-Hasura-Admin-Secret": config.get("ckanext.data_api.hasura_admin_key"),
     }
     response = requests.post(url, json=body, headers=headers)
-    print(response.json(), flush=True)
+    log.info(pformat(response.json()))
     return response.status_code
 
 
@@ -40,7 +41,7 @@ def track_view(table_name):
         "X-Hasura-Admin-Secret": config.get("ckanext.data_api.hasura_admin_key"),
     }
     response = requests.post(url, json=body, headers=headers)
-    print(response.json(), flush=True)
+    log.info(pformat(response.json()))
     return response.status_code
 
 
@@ -54,7 +55,8 @@ def get_resource_name(resource_name):
 def create_alias(resource_id, context):
     context['creating_alias'] = True
     resource_info = get_action('resource_show')(context, { 'id': resource_id })
-    get_action('datastore_create')(context, { 'resource_id': resource_id, 'aliases': get_resource_name(resource_info['name']), 'force': True})
+    result = get_action('datastore_create')(context, { 'resource_id': resource_id, 'aliases': get_resource_name(resource_info['name']), 'force': True})
+    log.info(pformat(result))
     track_view(get_resource_name(resource_info['name']))
     add_permissions(get_resource_name(resource_info['name']))
 
