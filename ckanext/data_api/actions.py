@@ -54,6 +54,7 @@ def get_resource_name(resource_name):
 
 def create_alias(resource_id, context):
     context['creating_alias'] = True
+    log.info("GETTING RESOURCE INFO")
     resource_info = get_action('resource_show')(context, { 'id': resource_id })
     result = get_action('datastore_create')(context, { 'resource_id': resource_id, 'aliases': get_resource_name(resource_info['name']), 'force': True})
     log.info(pformat(result))
