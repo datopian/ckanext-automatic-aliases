@@ -22,6 +22,7 @@ def add_permissions(table_name):
         "X-Hasura-Admin-Secret": config.get("ckanext.data_api.hasura_admin_key"),
     }
     response = requests.post(url, json=body, headers=headers)
+    print(response.json(), flush=True)
     return response.status_code
 
 
@@ -39,6 +40,7 @@ def track_view(table_name):
         "X-Hasura-Admin-Secret": config.get("ckanext.data_api.hasura_admin_key"),
     }
     response = requests.post(url, json=body, headers=headers)
+    print(response.json(), flush=True)
     return response.status_code
 
 
